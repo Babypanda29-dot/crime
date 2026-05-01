@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Report Crime</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="form-page">
+  <div class="form-box">
+    <h2>Submit Crime Report</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+
+      <label>
+        <input type="checkbox" name="anonymous" id="anonymousCheck">
+        Report Anonymously
+      </label>
+
+      <div id="personalDetails">
+        <input type="text" name="name" placeholder="Your Name">
+        <input type="text" name="phone" placeholder="Phone Number">
+      </div>
+
+      <input type="text" name="location" placeholder="Crime Location" required>
+
+      <select name="crime_type" required>
+        <option value="">Select Crime Type</option>
+        <option>Theft</option>
+        <option>Harassment</option>
+        <option>Cyber Crime</option>
+        <option>Violence</option>
+        <option>Drug Activity</option>
+        <option>Suspicious Activity</option>
+        <option>Other</option>
+      </select>
+
+      <textarea name="description" placeholder="Describe the incident..." required></textarea>
+
+      <label>Upload Evidence</label>
+      <input type="file" name="evidence">
+
+      <button type="submit">Submit Report</button>
+    </form>
+  </div>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

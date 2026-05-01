@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<nav class="admin-nav">
+  <h2>SafeCity Admin</h2>
+  <a href="/logout">Logout</a>
+</nav>
+
+<section class="dashboard">
+  <h1>Crime Reports Dashboard</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Location</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Evidence</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for report in reports %}
+      <tr>
+        <td>{{ report[0] }}</td>
+        <td>{{ report[1] }}</td>
+        <td>{{ report[2] }}</td>
+        <td>{{ report[3] }}</td>
+        <td>{{ report[4] }}</td>
+        <td>{{ report[5] }}</td>
+
+        <td>
+          {% if report[6] %}
+            {{ report[6] }}
+          {% else %}
+            No File
+          {% endif %}
+        </td>
+
+        <td>
+          <span class="status">{{ report[7] }}</span>
+        </td>
+
+        <td>{{ report[8] }}</td>
+
+        <td>
+          <form method="POST" action="/update-status/{{ report[0] }}">
+            <select name="status">
+              <option>Pending</option>
+              <option>Under Review</option>
+              <option>Action Taken</option>
+              <option>Closed</option>
+            </select>
+            <button type="submit">Update</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>
